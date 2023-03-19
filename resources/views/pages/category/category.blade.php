@@ -28,12 +28,18 @@
         </section>
 
         <section class="section-info-block">
-            <div class="container section-info-block__container">
-                @foreach ($services as $service)
+            <div class="container">
+                @foreach ($services as $key => $service)
                     @if ($loop->iteration % 2 == 0)
-                        @include('components.service-card', ['service' => $service, 'position' => 'even'])
+                        @include('components.service-card.service-card', [
+                            'service' => $service,
+                            'position' => 'even',
+                        ])
                     @else
-                        @include('components.service-card', ['service' => $service, 'position' => 'odd'])
+                        @include('components.service-card.service-card', [
+                            'service' => $service,
+                            'position' => 'odd',
+                        ])
                     @endif
                 @endforeach
             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Category;
 
 class CategoryController extends Controller
@@ -38,7 +39,19 @@ class CategoryController extends Controller
             }
         }
 
-        $services = $category->services()->get();
+        $services = DB::select(
+            "select s.*, concat('[',group_concat(
+                json_object(
+                'coach_level', cl.level,
+                'value', cscl.service_price
+                )),']') as service_prices
+            from category_service_coach_level as cscl
+            left join services as s on s.id = cscl.service_id
+            left join coach_levels as cl on cl.id = cscl.coach_level_id
+            where cscl.category_id = :category_id
+            group by cscl.service_id",
+            ['category_id' => $categoryId]
+        );
 
         return view('pages.' . $this->viewName . '.' . $this->viewName . '', compact('category', 'services'));
     }

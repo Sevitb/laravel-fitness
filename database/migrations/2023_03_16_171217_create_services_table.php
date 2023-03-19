@@ -13,14 +13,11 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('coach_level_id')->nullable();
             $table->string('title');
-            $table->string('price')->nullable();
-            $table->json('description');
+            $table->unsignedInteger('price')->nullable();
+            $table->json('description')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
-
-            $table->foreign('coach_level_id')->references('id')->on('coach_levels');
         });
     }
 

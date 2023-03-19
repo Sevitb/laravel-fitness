@@ -16,6 +16,14 @@ class Service extends Model
      */
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_service', 'category_id', 'service_id');
+        return $this->belongsToMany(Category::class);
+    }
+
+     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function coachLevels()
+    {
+        return $this->belongsToMany(CoachLevel::class);
     }
 }
