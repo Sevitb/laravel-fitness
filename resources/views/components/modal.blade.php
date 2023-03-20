@@ -23,7 +23,8 @@
     <div class="contact-form__form-container">
         <div class="contact-form__header">
             <h1 class="h-1 contact-form__title">Давайте познакомимся поближе!</h1>
-            <h4 class="h-4 contact-form__subtitle">Введите Ваше имя и номер телефона, a мы позвоним для уточнения желаемого времени.
+            <h4 class="h-4 contact-form__subtitle">Введите Ваше имя и номер телефона, a мы позвоним для уточнения
+                желаемого времени.
             </h4>
         </div>
         <form class="form" id="contact-form" data-form-type="modal">
@@ -41,8 +42,10 @@
                     placeholder="Email">
             </div>
             @isset($coach)
-                <input type="hidden" name="coach" value="{{$coach->name . ' ' . $coach->surname}}">
+                <input type="hidden" name="coach" value="{{ $coach->name . ' ' . $coach->surname }}">
             @endisset
+            <input type="hidden" name="service_title" value="">
+            <input type="hidden" name="coach_level" value="">
             {{-- <div class="contact-form__checkboxes-container">
                 <div class="form__input-group contact-form__input-group">
                     <label for="radio-now">Перезвонить сейчас</label>

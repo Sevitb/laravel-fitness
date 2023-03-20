@@ -18,11 +18,11 @@ use Illuminate\Support\Facades\Route;
  */
 Route::get('/', 'HomeController@index');
 
-Route::get('coach/{id?}','CoachController@getCoach');
+Route::get('coach/{id?}', 'CoachController@getCoach');
 
-Route::get('category/{id}','CategoryController@getCategory');
+Route::get('category/{id}', 'CategoryController@getCategory');
 
 /**
  * Post requests
  */
-Route::post('send-mail', 'ContactController@sendMail');
+Route::post('/send-mail', 'ContactController@sendMail');

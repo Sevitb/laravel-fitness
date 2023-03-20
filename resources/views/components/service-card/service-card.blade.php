@@ -27,12 +27,14 @@
                                     Выберите категорию тренера:
                                 </p>
                                 <button id="{{ $service->id }}-{{ $service_price->coach_level }}"
-                                    class="category-card__tab-btn h-4 tablinks active" onclick="openTab(event, this.id)">
+                                    class="category-card__tab-btn service__tab-btn h-4 tablinks active"
+                                    onclick="openTab(event, this.id)">
                                     Категория {{ $service_price->coach_level }}
                                 </button>
                             @else
                                 <button id="{{ $service->id }}-{{ $service_price->coach_level }}"
-                                    class="category-card__tab-btn h-4 tablinks" onclick="openTab(event, this.id)">
+                                    class="category-card__tab-btn service__tab-btn h-4 tablinks"
+                                    onclick="openTab(event, this.id)">
                                     Категория {{ $service_price->coach_level }}
                                 </button>
                             @endif
@@ -69,7 +71,8 @@
                     </div>
                 @endisset
             </div>
-            <button class="btn section-info-block__btn">Записаться</button>
+            <button class="btn section-info-block__btn" data-modal-id="modal-1" data-service-id="{{ $service->id }}"
+                data-service-title="{{ $service->title }}">Записаться</button>
         </div>
         <div class="section-info-block__image-container">
             <div class="section-info-block__background-image">
@@ -109,12 +112,14 @@
                                     Выберите категорию тренера:
                                 </p>
                                 <button id="{{ $service->id }}-{{ $service_price->coach_level }}"
-                                    class="category-card__tab-btn h-4 tablinks active" onclick="openTab(event, this.id)">
+                                    class="category-card__tab-btn service__tab-btn h-4 tablinks active"
+                                    onclick="openTab(event, this.id)">
                                     Категория {{ $service_price->coach_level }}
                                 </button>
                             @else
                                 <button id="{{ $service->id }}-{{ $service_price->coach_level }}"
-                                    class="category-card__tab-btn h-4 tablinks" onclick="openTab(event, this.id)">
+                                    class="category-card__tab-btn service__tab-btn h-4 tablinks"
+                                    onclick="openTab(event, this.id)">
                                     Категория {{ $service_price->coach_level }}
                                 </button>
                             @endif
@@ -151,7 +156,8 @@
                     </div>
                 @endisset
             </div>
-            <button class="btn section-info-block__btn">Записаться</button>
+            <button class="btn section-info-block__btn" data-modal-id="modal-1" data-service-id="{{ $service->id }}"
+                data-service-title="{{ $service->title }}">Записаться</button>
         </div>
     @endif
 </div>

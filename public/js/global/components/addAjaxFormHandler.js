@@ -1,6 +1,6 @@
 async function sendMail(form) {
     let data = new FormData(form);
-    let response = await fetch('send-mail', {
+    let response = await fetch('/send-mail', {
         method: 'POST',
         body: data
     });

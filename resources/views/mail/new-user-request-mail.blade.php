@@ -22,5 +22,11 @@
         @isset($data['coach'])
             <h2>К тренеру: {{ $data['coach'] }}</h2>
         @endisset
+        @isset($data['service_title'])
+            <h2>Название услуги: {{ $data['service_title'] }}</h2>
+        @endisset
+        @isset($data['coach_level'])
+            <h2>Категория тренера: {{ $data['coach_level'] }}</h2>
+        @endisset
     </div>
 </div>

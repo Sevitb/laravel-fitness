@@ -21,6 +21,8 @@ class ContactController extends Controller
             'email' => 'email',
             'name' => 'required|max:255',
             'coach' => 'max:255',
+            'service_title' => 'max:255',
+            'coach_level' => 'max:20',
         ]);
 
         Mail::to('peskovatzkov.vs@gmail.com')

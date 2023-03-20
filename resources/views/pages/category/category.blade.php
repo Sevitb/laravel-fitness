@@ -10,7 +10,6 @@
 
 @section('content')
     <main class="main">
-        @include('components.modal')
         <section class="section-main-zone">
             <div class="section-main-zone__container container">
                 <div class="section-main-zone__column">
@@ -44,5 +43,22 @@
                 @endforeach
             </div>
         </section>
+
+        @if ($seasonTickets !== [])
+            <section class="section-season-tickets">
+                <div class="container">
+                    <div class="section-season-tickets__row">
+                        @foreach ($seasonTickets as $sesonTicket)
+                            @include('components.season-ticket-card.season-ticket-card', [
+                                'seasonTicket' => $sesonTicket,
+                            ])
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+        @endif
+
+        <x-modal />
+
     </main>
 @endsection
