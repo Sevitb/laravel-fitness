@@ -27,7 +27,7 @@ class CategoryController extends Controller
 
 
     /** 
-     * Get single coach object
+     * Get single category object
      * 
      * @param int $coachId
      */
@@ -39,33 +39,9 @@ class CategoryController extends Controller
             }
         }
 
-        $services = DB::select(
-            "select s.*, concat('[',group_concat(
-                json_object(
-                'coach_level', cl.level,
-                'value', cscl.service_price
-                )),']') as service_prices
-            from category_service_coach_level as cscl
-            left join services as s on s.id = cscl.service_id
-            left join coach_levels as cl on cl.id = cscl.coach_level_id
-            where cscl.category_id = :category_id
-            group by cscl.service_id",
-            ['category_id' => $categoryId]
-        );
+        $services = $category->services()->get();
 
-        $seasonTickets = DB::select(
-            "select st.*, concat('[',group_concat(
-                json_object(
-                'coach_level', cl.level,
-                'value', cstcl.season_ticket_price
-                )),']') as season_ticket_prices
-            from category_season_ticket_coach_level as cstcl
-            left join season_tickets as st on st.id = cstcl.season_ticket_id
-            left join coach_levels as cl on cl.id = cstcl.coach_level_id
-            where cstcl.category_id = :category_id
-            group by cstcl.season_ticket_id",
-            ['category_id' => $categoryId]
-        );
+        $seasonTickets = $category->seasonTickets()->get();
 
         return view('pages.' . $this->viewName . '.' . $this->viewName . '', compact('category', 'services', 'seasonTickets'));
     }

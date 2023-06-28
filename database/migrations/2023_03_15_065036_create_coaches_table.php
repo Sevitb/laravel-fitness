@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('patronymic');
             $table->string('portrait');
             $table->json('description');
+            $table->unsignedInteger('level_id');
             $table->string('canvas_image')->nullable();
             $table->timestamps();
         });

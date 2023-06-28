@@ -44,7 +44,7 @@
             </div>
         </section>
 
-        @if ($seasonTickets !== [])
+        @if (count($seasonTickets))
             <section class="section-season-tickets">
                 <div class="container">
                     <div class="section-season-tickets__row">

@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category_service_coach_level', function (Blueprint $table) {
+        Schema::create('category_season_ticket', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('service_id');
-            $table->unsignedBigInteger('coach_level_id');
-            $table->unsignedInteger('service_price');
+            $table->unsignedBigInteger('season_ticket_id');
+            $table->unsignedInteger('season_ticket_price')->nullable();
+            $table->json('season_ticket_coach_levels_prices');
+            $table->integer('price_type')->default(0);
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('service_id')->references('id')->on('services');
-            $table->foreign('coach_level_id')->references('id')->on('coach_levels');
+            $table->foreign('season_ticket_id')->references('id')->on('season_tickets');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category_service_coach_level');
+        Schema::dropIfExists('category_season_ticket');
     }
 };

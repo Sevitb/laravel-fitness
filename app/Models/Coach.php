@@ -9,6 +9,15 @@ class Coach extends Model
 {
     use HasFactory;
 
-    protected $table = 'coaches';
+    protected $fillable = [
+        'name',
+        'surname',
+        'patronymic',
+        'portrait',
+        'description',
+        'canvas_image',
+        'level_id',
+    ];
 
+    protected $table = 'coaches';
 }

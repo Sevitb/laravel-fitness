@@ -9,6 +9,12 @@ class Service extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'image',
+    ];
+
     protected $table = 'services';
 
     /**
@@ -16,14 +22,6 @@ class Service extends Model
      */
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
-    }
-
-     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function coachLevels()
-    {
-        return $this->belongsToMany(CoachLevel::class);
+        return $this->belongsToMany(Category::class)->withPivot(['service_price', 'service_coach_levels_prices', 'price_type']);
     }
 }

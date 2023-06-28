@@ -23,6 +23,14 @@ class Category extends Model
      */
     public function services()
     {
-        return $this->belongsToMany(Service::class);
+        return $this->belongsToMany(Service::class)->withPivot(['service_price', 'service_coach_levels_prices', 'price_type']);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function seasonTickets()
+    {
+        return $this->belongsToMany(SeasonTicket::class)->withPivot(['season_ticket_price', 'season_ticket_coach_levels_prices', 'price_type']);
     }
 }

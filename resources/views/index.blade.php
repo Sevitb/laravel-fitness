@@ -7,6 +7,7 @@
     @stack('links')
     @include('head.scripts')
     @stack('scripts')
+    <title>КАМ</title>
 </head>
 
 <body>
